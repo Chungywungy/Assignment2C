@@ -27,8 +27,14 @@ void subtractArrays(const double first[],
 /* Task 2: Find the Index of the Smallest Value */
 int myMin(const double values[], size_t size)
 {
-    /* TODO: Return the index of the FIRST smallest value. */
-    return 0;
+    int min = 1;
+    for (size_t i = 0; i <= size; i++) {
+        if (values[i] < values[min]) {
+            min = i;
+            return min;
+        }
+    }
+    return min;
 }
 
 
