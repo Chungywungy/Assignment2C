@@ -41,15 +41,18 @@ int myMin(const double values[], size_t size)
 /* Task 3: Reverse-Copy an Array Using Subscripts */
 void reverseCopyArray(const double source[], double target[], size_t size)
 {
-    /* TODO: Use array-subscript notation. */
+    for (size_t i = 0; i <= size; i++) {
+        target[i] = source[size - 1 - i];
+    }
 }
 
 
 /* Task 3: Reverse-Copy an Array Using Pointers */
 void reverseCopyPointer(const double *source, double *target, size_t size)
 {
-    /* TODO: Use pointer notation and pointer movement.
-       Do NOT use square-bracket array notation in this function. */
+    for (size_t i = 0; i <= size; i++) {
+        *(target + i) = *(source + (size - i - 1));
+    }
 }
 
 
