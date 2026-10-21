@@ -18,7 +18,9 @@ void subtractArrays(const double first[],
                     double result[],
                     size_t size)
 {
-    /* TODO: */
+    for (size_t i = 0; i < size; i++) {
+        result[i] = first[i] - second[i];
+    }
 }
 
 
