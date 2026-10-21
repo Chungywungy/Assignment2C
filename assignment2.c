@@ -18,6 +18,7 @@ void subtractArrays(const double first[],
                     double result[],
                     size_t size)
 {
+    //populates result array with values
     for (size_t i = 0; i < size; i++) {
         result[i] = first[i] - second[i];
     }
@@ -28,12 +29,15 @@ void subtractArrays(const double first[],
 int myMin(const double values[], size_t size)
 {
     int min = 1;
+    //iterates through values to see which index has the smallest value
     for (size_t i = 0; i <= size; i++) {
         if (values[i] < values[min]) {
-            min = i;
+            //min gets overwritten if value at index i is smaller than min
+            min = (int) i;
             return min;
         }
     }
+    //returns 1 if nothing is smaller
     return min;
 }
 
@@ -41,6 +45,7 @@ int myMin(const double values[], size_t size)
 /* Task 3: Reverse-Copy an Array Using Subscripts */
 void reverseCopyArray(const double source[], double target[], size_t size)
 {
+    //populates the target array with values starting from the right most value of the source array
     for (size_t i = 0; i <= size; i++) {
         target[i] = source[size - 1 - i];
     }
@@ -50,6 +55,7 @@ void reverseCopyArray(const double source[], double target[], size_t size)
 /* Task 3: Reverse-Copy an Array Using Pointers */
 void reverseCopyPointer(const double *source, double *target, size_t size)
 {
+    //populates the target array with values starting from the right most value of the source array using pointers
     for (size_t i = 0; i <= size; i++) {
         *(target + i) = *(source + (size - i - 1));
     }
@@ -59,24 +65,45 @@ void reverseCopyPointer(const double *source, double *target, size_t size)
 /* Task 4(a): Calculate a Week's Average */
 double calculateWeekAverage(const double week[], size_t size)
 {
-    /* TODO: */
-    return 0.0;
+    double sum = 0.0;
+    //adds the value at i to the total sum
+    for (size_t i = 0; i < size; i++) {
+        sum += week[i];
+    }
+    // returns the average of the week
+    return sum / (double) size ;
 }
 
 
 /* Task 4(b): Calculate the Overall Average */
 double calculateOverallAverage(const double temperatures[][7], size_t rows)
 {
-    /* TODO: */
-    return 0.0;
+    double sum = 0.0;
+    // adds the value at row, col to the total sum
+    for (size_t row = 0; row < rows; row++) {
+        for (size_t col = 0; col < 7; col++) {
+            sum += temperatures[row][col];
+        }
+    }
+    // returns overall average
+    return sum / ((double) rows * 7);
 }
 
 
 /* Task 4(c): Find the Largest Temperature */
 double findLargestTemperature(const double temperatures[][7], size_t rows)
 {
-    /* TODO: */
-    return 0.0;
+    double largest = 0.0;
+    // finds the largest value in the arrays
+    for (size_t row = 0; row < rows; row++) {
+        for (size_t col = 0; col < 7; col++) {
+            // largest gets replaced if value at row, col is larger
+            if (temperatures[row][col] > largest) {
+                largest = temperatures[row][col];
+            }
+        }
+    }
+    return largest;
 }
 
 
@@ -85,8 +112,16 @@ int countAboveAverage(const double temperatures[][7],
                       size_t rows,
                       double overallAverage)
 {
-    /* TODO: Count values STRICTLY greater than overallAverage. */
-    return 0;
+    int count = 0;
+    //counts how many temps are above the overall average
+    for (size_t row = 0; row < rows; row++) {
+        for (size_t col = 0; col < 7; col++) {
+            if (temperatures[row][col] > overallAverage) {
+                count++;
+            }
+        }
+    }
+    return count;
 }
 
 
